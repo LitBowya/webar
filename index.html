@@ -12,31 +12,10 @@
 
 <body>
     <a-scene vr-mode-ui="enabled: false" arjs="sourceType: webcam; videoTexture: true; debugUIEnabled: false;">
-        <a-box position="0 0.5 0" material="color: green;" rotation="0 45 0" scale="0.5 0.5 0.5"></a-box>
+        <a-box position="0 1.25 -0.5" material="color: red;" rotation="0 0 0" scale="0.5 0.5 0.5">
+            <a-animation attribute="rotation" to="360 360 360" dur="3000" easing="linear" repeat="indefinite"></a-animation>
+        </a-box>
         <a-camera gps-camera rotation-reader></a-camera>
-
-        <script>
-            // Function to update text with fetched latitude and longitude
-            function updateLocationText(latitude, longitude) {
-                const locationText = document.getElementById('locationText');
-                if (locationText) {
-                    locationText.setAttribute('gps-entity-place', `latitude: ${latitude}; longitude: ${longitude};`);
-                    locationText.setAttribute('value', `Latitude: ${latitude}\nLongitude: ${longitude}`);
-                }
-            }
-
-            // Get user's location (for demonstration purposes only)
-            navigator.geolocation.getCurrentPosition(
-                (position) => {
-                    const { latitude, longitude } = position.coords;
-                    updateLocationText(latitude, longitude);
-                },
-                (error) => {
-                    console.error('Error fetching location:', error);
-                    updateLocationText('Unable to fetch', 'location');
-                }
-            );
-        </script>
     </a-scene>
 </body>
 
