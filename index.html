@@ -12,8 +12,7 @@
 
 <body>
     <a-scene vr-mode-ui="enabled: false" arjs="sourceType: webcam; videoTexture: true; debugUIEnabled: false;">
-        <a-text id="locationText" value="Loading location..." look-at="[gps-camera]" scale="120 120 120"
-            gps-entity-place=""></a-text>
+        <a-box position="0 0.5 -1" material="color: red;" rotation="0 45 0" scale="0.5 0.5 0.5"></a-box>
         <a-camera gps-camera rotation-reader></a-camera>
 
         <script>
@@ -26,7 +25,7 @@
                 }
             }
 
-            // Get user's location
+            // Get user's location (for demonstration purposes only)
             navigator.geolocation.getCurrentPosition(
                 (position) => {
                     const { latitude, longitude } = position.coords;
